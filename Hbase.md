@@ -47,5 +47,5 @@ HBase是BigTable的开源 java 版本，是建立在HDFS之上，提供高可靠
 #### 2、Hbase相关的模块以及Hbase表格的特性
 Hbase需要运行在HDFS之上，以HDFS作为其基础的存储设施，Hbase上层提供了访问的数据的Java API层，供应用访问存储在Hbase的数据。在Habse的集群中主要由Master和Region Server组成，以及Zookeeper，具体模型如下图所示。
 
-![Habse](https://github.com/horaceheqi/Personal/blob/master/Image/Hbase相关模块.png)
-![index](https://github.com/linwh8/ModernWebPrograming/raw/master/My_image/recipe_index.png)
+![Habse](https://github.com/horaceheqi/Personal/blob/master/Image/Hbase相关模块.png){:height="100" width="100"}
+
