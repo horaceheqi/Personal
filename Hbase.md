@@ -47,5 +47,19 @@ HBase是BigTable的开源 java 版本，是建立在HDFS之上，提供高可靠
 #### 2、Hbase相关的模块以及Hbase表格的特性
 Hbase需要运行在HDFS之上，以HDFS作为其基础的存储设施，Hbase上层提供了访问的数据的Java API层，供应用访问存储在Hbase的数据。在Habse的集群中主要由Master和Region Server组成，以及Zookeeper，具体模型如下图所示。
 
-![Habse](https://github.com/horaceheqi/Personal/blob/master/Image/Hbase相关模块.png){:height="100" width="100"}
+![Habse](https://github.com/horaceheqi/Personal/blob/master/Image/Hbase相关模块.png)
 
+其中
+
+- Master
+
+Hbase Master 用于协调多个Region Server，侦测各个Region Server之间的状态，并平衡Region Server之间的负载。
+Hbase Master 还有一个职责就是负责分配Region给Region Server。Hbase是允许多个Master节点共存的，但是这需要Zookeeper的帮助。不过当多个Master节点共存时，只有一个Master是提供服务的，其他的Master节点处于待命的状态。当正在工作的Master节点宕机时，其他的Master则会接管Hbase的集群。
+
+- Region Server
+
+对于一个Region Server 而言，其包括了许多个Region。Region Server的作用只是管理表格，以及实现读写操作。Client直接连接Region Server，并通信获取Hbase中的数据。对于Regio而言，则是真实存放Hbase数据的地方，也就是说Region是Hbase可用性和分布式的基本单位。如果当一个表格很大，并由多个CF组成时，那么表的数据将存放在多个Region之间，并且在每个Region中会关联多个存储单元(Store)。
+
+- Zookeeper
+
+对于Hbase而言，Zookeeper的作用是至关重要的。首先Zookeeper是作为Habse Master的HA解决方案，也就是说，是Zookeeper保证了至少有一个HBase Master处于运行状态。并且Zookeeper负责Region 和 Region Server的注册。其实Zookeeper发展到目前为止，已经成为了分布式大数据框架中容错性的标准框架。不光是Hbase，几乎所有的分布式大数据相关的开源框架，都依赖于Zookeeper实现HA。
