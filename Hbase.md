@@ -43,3 +43,9 @@ HBase是BigTable的开源 java 版本，是建立在HDFS之上，提供高可靠
 |2|info:ln|123456789|李|
 
 我们已经提到 HBase 是按照 CF 来存储数据的。在表 3 中，我们看到了两个 CF，分别是 info 和 pwd。info 存储着姓名相关列的数据，而 pwd 则是密码相关的数据。上表便是 info 这个 CF 存储在 Hbase 中的数据排布。Pwd 的数据排布是类似的。上表中的 fn 和 ln 称之为 Column-key 或者 Qulifimer。在 Hbase 中，Row-key 加上 CF 加上 Qulifier 再加上一个时间戳才可以定位到一个单元格数据（Hbase 中每个单元格默认有 3 个时间戳的版本数据）。初学者，在一开始接触这些概念是很容易混淆。其实不管是 CF 还是 Qulifier 都是客户定义出来的。也就是说在 HBase 中创建表格时，就需要指定表格的 CF、Row-key 以及 Qulifier。
+
+#### 2、Hbase相关的模块以及Hbase表格的特性
+Hbase需要运行在HDFS之上，以HDFS作为其基础的存储设施，Hbase上层提供了访问的数据的Java API层，供应用访问存储在Hbase的数据。在Habse的集群中主要由Master和Region Server组成，以及Zookeeper，具体模型如下图所示。
+
+![Habse相关模块](D:/资料/图片/Hadoop/Hbase.png)
+
