@@ -63,3 +63,20 @@ Hbase Master 还有一个职责就是负责分配Region给Region Server。Hbase�
 - Zookeeper
 
 对于Hbase而言，Zookeeper的作用是至关重要的。首先Zookeeper是作为Habse Master的HA解决方案，也就是说，是Zookeeper保证了至少有一个HBase Master处于运行状态。并且Zookeeper负责Region 和 Region Server的注册。其实Zookeeper发展到目前为止，已经成为了分布式大数据框架中容错性的标准框架。不光是Hbase，几乎所有的分布式大数据相关的开源框架，都依赖于Zookeeper实现HA。
+
+#### 3、Hbase常用命令
+
+- 导出到本地
+
+```hbase org.apache.hadoop.hbase.mapreduce.Export Hbase表 file:///home/hadoop/地址```
+
+- 导出到HDFS
+
+```hbase org.apache.hadoop.hbase.mapreduce.Export Hbase表 hdfs://mymaster:9000/地址```
+
+- 导入数据(与导出类似)
+
+(注意两点：第一、在导入之前要确保Hbase中有同名表，否则导入时，会报“找不到表”错误)
+
+```hbase org.apache.hadoop.hbase.mapreduce.Import Hbase表 file:///home/hadoop/地址 ```
+
