@@ -76,7 +76,7 @@ Hbase Master 还有一个职责就是负责分配Region给Region Server。Hbase�
 
 - 导入数据(与导出类似)
 
-(注意两点：第一、在导入之前要确保Hbase中有同名表，否则导入时，会报“找不到表”错误)
+(注意两点：第一、在导入之前要确保Hbase中有同名表，否则导入时，会报“找不到表”错误；第二、同名表的ColumnFamily name也需要相同)
 
 ```hbase org.apache.hadoop.hbase.mapreduce.Import Hbase表 file:///home/hadoop/地址 ```
 
