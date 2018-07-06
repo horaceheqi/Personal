@@ -1,4 +1,4 @@
-# IDEA + Maven + Hadoop
+IDEA + Maven + Hadoop
 ---
 
 ### 1、新建Intellij下的Maven项目
