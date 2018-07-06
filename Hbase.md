@@ -1,4 +1,4 @@
-Hbase基础
+# Hbase基础
 ---
 #### 1、简介
 HBase是BigTable的开源 java 版本，是建立在HDFS之上，提供高可靠性、高性能、列存储、可伸缩、实时读写 NoSQL 的数据库系统。
