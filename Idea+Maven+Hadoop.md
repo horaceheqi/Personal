@@ -220,8 +220,8 @@ haha 1
 ---
 ### 注意
 #### windows下：Failed to set permissions of path: \tmp\ \.staging to 0700
-这是个官方BUG，是Windows下文件权限问题，在Linux下可以正常运行，不存在这样的问题。解决方法是修改`/hadoop1.0.0/src/core/org/apache/hadoopo/fs/Fil
-eUtil.java'里面的checkReturnValue，注释掉即可
+这是个官方BUG，是Windows下文件权限问题，在Linux下可以正常运行，不存在这样的问题。
+解决方法是修改`/hadoop1.0.0/src/core/org/apache/hadoopo/fs/FileUtil.java` 里面的checkReturnValue，注释掉即可
 
 ```
 private static void checkReturnValue(boolean rv, File p,  
