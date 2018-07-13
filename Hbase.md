@@ -81,9 +81,7 @@ Hbase Master 还有一个职责就是负责分配Region给Region Server。Hbase�
 ```hbase org.apache.hadoop.hbase.mapreduce.Import Hbase表 file:///home/hadoop/地址 ```
 
 - 建表命令(集群上创建和Java代码创建)
-#### 集群
 `hbase org.apache.hadoop.hbase.util.RegionSplitter yxt_mobile_all_2013_v2 HexStringSplit -c 15 -f des`
-#### Java代码
 ```
 public class HbaseTableTest {  
     private static Configuration conf;  
