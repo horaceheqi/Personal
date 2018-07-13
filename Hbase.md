@@ -80,3 +80,43 @@ Hbase Master 还有一个职责就是负责分配Region给Region Server。Hbase�
 
 ```hbase org.apache.hadoop.hbase.mapreduce.Import Hbase表 file:///home/hadoop/地址 ```
 
+- 建表命令(集群上创建和Java代码创建)
+#### 集群
+`hbase org.apache.hadoop.hbase.util.RegionSplitter yxt_mobile_all_2013_v2 HexStringSplit -c 15 -f des`
+#### Java代码
+```
+public class HbaseTableTest {  
+    private static Configuration conf;  
+    static TableName tableName = TableName.valueOf("hbase_table");  
+    static {  
+        conf = HBaseConfiguration.create();  
+    }  
+  
+    public static void createTable() {  
+        Connection conn = null;  
+        HBaseAdmin admin = null;  
+  
+        try {  
+            conn = ConnectionFactory.createConnection(conf);  
+            admin = (HBaseAdmin) conn.getAdmin();  
+            if (admin.tableExists(tableName)) {  
+                admin.disableTable(tableName);  
+                admin.deleteTable(tableName);  
+            }  
+  
+            HTableDescriptor descTable = new HTableDescriptor(tableName);  
+            HColumnDescriptor family1 = new HColumnDescriptor("family1");  
+            HColumnDescriptor family2 = new HColumnDescriptor("family2");  
+            HColumnDescriptor family3 = new HColumnDescriptor("family3");  
+            descTable.addFamily(family1);  
+            descTable.addFamily(family2);  
+            descTable.addFamily(family3);  
+            admin.createTable(descTable);  
+        } catch (IOException e) {  
+            e.printStackTrace();  
+        } finally {  
+            IOUtils.closeIO(conn);  
+            IOUtils.closeIO(admin);  
+        }  
+    }  
+```
